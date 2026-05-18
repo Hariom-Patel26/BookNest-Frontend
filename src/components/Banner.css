@@ -1,0 +1,41 @@
+.promotion-banner {
+  background: linear-gradient(90deg, #f59e0b, #d97706);
+  /* Amber gradient matches BookNest theme */
+  color: #ffffff;
+  padding: 8px 0;
+  overflow: hidden;
+  position: relative;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  z-index: 1001;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.banner-content {
+  display: flex;
+  white-space: nowrap;
+  gap: 90px;
+  animation: marquee 30s linear infinite;
+  width: max-content;
+}
+
+.banner-content span {
+  display: inline-block;
+  padding: 0 20px;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pause animation on hover */
+.promotion-banner:hover .banner-content {
+  animation-play-state: paused;
+}

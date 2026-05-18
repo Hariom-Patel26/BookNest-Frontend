@@ -1,0 +1,308 @@
+/* ─── Admin layout ─── */
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--gray-100);
+}
+
+/* Sidebar */
+.admin-sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  background: var(--navy);
+  display: flex;
+  flex-direction: column;
+  transition: width 0.25s ease;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+.admin-sidebar.collapsed { width: 64px; }
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1rem;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  white-space: nowrap;
+  overflow: hidden;
+  gap: 0.5rem;
+}
+.collapse-btn {
+  color: rgba(255, 255, 255, 0.5);
+  padding: 0.35rem;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+.collapse-btn:hover { color: var(--white); background: rgba(255, 255, 255, 0.1); }
+
+.sidebar-nav {
+  flex: 1;
+  padding: 0.75rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+}
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.875rem;
+  border-radius: var(--radius-md);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: var(--transition);
+  white-space: nowrap;
+  overflow: hidden;
+}
+.sidebar-link:hover { background: rgba(255, 255, 255, 0.1); color: var(--white); }
+.sidebar-link.active { background: var(--amber); color: var(--white); }
+
+/* Switch to User View link */
+.sidebar-user-view {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1.375rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  transition: var(--transition);
+  white-space: nowrap;
+  overflow: hidden;
+}
+.sidebar-user-view:hover { color: #6ee7b7; background: rgba(52, 211, 153, 0.1); }
+
+.sidebar-logout {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1.375rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  transition: var(--transition);
+  white-space: nowrap;
+  overflow: hidden;
+}
+.sidebar-logout:hover { color: #fca5a5; background: rgba(220, 38, 38, 0.1); }
+
+/* Main area */
+.admin-main {
+  flex: 1;
+  overflow-x: hidden;
+  min-width: 0;
+}
+.admin-page { padding: 2rem; max-width: 1200px; }
+
+.admin-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.75rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.admin-page-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--navy);
+}
+
+/* Stat cards */
+.stat-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.stat-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(15, 31, 61, 0.06);
+}
+.stat-card-icon {
+  width: 40px; height: 40px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+.stat-val {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--navy);
+  font-family: var(--font-display);
+}
+.stat-label { font-size: 0.8rem; color: var(--gray-500); margin-top: 0.25rem; }
+
+/* Admin card */
+.admin-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(15, 31, 61, 0.06);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.admin-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 1rem;
+}
+
+/* Table */
+.admin-table-wrap { overflow-x: auto; }
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+.admin-table th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  background: var(--cream);
+  color: var(--gray-500);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--gray-100);
+  white-space: nowrap;
+}
+.admin-table td {
+  padding: 0.875rem 1rem;
+  color: var(--gray-700);
+  border-bottom: 1px solid var(--gray-100);
+  vertical-align: middle;
+}
+.admin-table tr:last-child td { border-bottom: none; }
+.admin-table tr:hover td { background: var(--cream); }
+.empty-row { text-align: center; color: var(--gray-500); padding: 2rem !important; }
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+.view-all-link {
+  display: block;
+  text-align: center;
+  padding-top: 1rem;
+  font-size: 0.875rem;
+  color: var(--amber);
+  font-weight: 600;
+  border-top: 1px solid var(--gray-100);
+}
+
+/* Analytics grid */
+.analytics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   FIXED Modal — overlay scrolls; align-start; prevents top clipping bug.
+   This is the fix for the "upper sections invisible / can't scroll" problem.
+   ────────────────────────────────────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-start;          /* was center -> caused top clipping */
+  justify-content: center;
+  padding: 2rem 1rem;
+  overflow-y: auto;                 /* the OVERLAY scrolls, not the card */
+  -webkit-overflow-scrolling: touch;
+}
+.modal-card {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  width: 100%;
+  max-width: 680px;
+  margin: auto 0;                   /* center vertically when content is short */
+  box-shadow: var(--shadow-lg);
+  /* NO max-height / overflow-y — let the overlay handle it. */
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--gray-100);
+  position: sticky;
+  top: 0;
+  background: var(--white);
+  border-top-left-radius: var(--radius-xl);
+  border-top-right-radius: var(--radius-xl);
+  z-index: 1;
+}
+.modal-header h4 { color: var(--navy); font-size: 1.1rem; }
+.modal-header button {
+  color: var(--gray-500);
+  transition: var(--transition);
+  display: flex;
+  padding: 0.25rem;
+  border-radius: var(--radius-sm);
+}
+.modal-header button:hover { color: var(--danger); background: var(--danger-bg); }
+
+.modal-form { padding: 1.5rem; }
+.modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.modal-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  padding-top: 1rem;
+  border-top: 1px solid var(--gray-100);
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.stock-input {
+  text-align: center;
+  padding: 0.35rem 0.5rem !important;
+  font-size: 0.875rem !important;
+}
+
+@media (max-width: 1024px) {
+  .stat-cards     { grid-template-columns: repeat(2, 1fr); }
+  .analytics-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .admin-sidebar { width: 64px; }
+  .sidebar-logo span,
+  .sidebar-link span,
+  .sidebar-user-view span,
+  .sidebar-logout span { display: none; }
+  .stat-cards     { grid-template-columns: 1fr 1fr; }
+  .modal-grid     { grid-template-columns: 1fr; }
+  .admin-page     { padding: 1rem; }
+  .modal-overlay  { padding: 1rem 0.5rem; }
+}
